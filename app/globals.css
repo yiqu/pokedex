@@ -1,29 +1,37 @@
-@tailwind base;
-@tailwind components;
+/* @tailwind base;
+@tailwind components; */
 @tailwind utilities;
 
+/* scrollbar */
+@import 'simplebar-react/dist/simplebar.min.css';
+
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  height: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'G Sans Text', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  color: #202124;
+}
+
+#root {
+  height: 100%;
 }
 
 @layer utilities {
@@ -31,3 +39,41 @@ body {
     text-wrap: balance;
   }
 }
+
+a {
+  text-decoration: none;
+  color: #2c58a8;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a.active {
+  background-color: #e4eaf4;
+}
+
+a.active:hover {
+  background-color: #e4eaf4;
+}
+
+.left-nav-logo {
+   /* #c1af3e */
+  background-image: linear-gradient(80deg, #331f14, #c1af3e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  background-color: #ccc;
+  background-size: 100%;
+  background-repeat: repeat;
+}
+/* $palette-name: 'One Piece
+$palette-color1: #c8472c;
+$palette-color2: #412a1e;
+$palette-color3: #f8de3c;
+$palette-color4: #fefefe;
+$palette-color5: #58acf4;
+$palette-color6: #105edd;
+$palette-color7: #0b3075; */
