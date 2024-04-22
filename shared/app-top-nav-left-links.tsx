@@ -5,9 +5,9 @@ import AppLink from './link/app-link';
 export default function AppTopNavLeftLinks() {
   return (
     <Stack direction="row" justifyContent="end" alignItems="center" spacing={ 4 }>
-      <AppLink href="games" title="games" />
-      <AppLink href="locations" title="locations" />
-      <AppLink href="items" title="items" />
+      <AppLink href="games" title="Games" />
+      <AppLink href="locations" title="Locations" />
+      <AppLink href="items" title="Items" />
     </Stack>
   );
 }

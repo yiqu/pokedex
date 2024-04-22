@@ -6,9 +6,9 @@ import AppTopNavBar from './app-top-nav-bar';
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <Box width="100%">
+      <AppTopNavBar />
       <Grid container sx={ { flexGrow: 1 } }>
         <Grid md={ 6 } mdOffset={ 3 }>
-          <AppTopNavBar />
           { children }
         </Grid>
       </Grid>

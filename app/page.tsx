@@ -4,9 +4,9 @@ import PokemonListLoading from '@/shared/loadings';
 import Stack from '@mui/material/Stack';
 import Skeleton from '@mui/material/Skeleton';
 
-import PokemonList from './home/list';
-import PokemonListTitle from './home/title';
-import PokemonListAllCount from './home/all-count';
+import PokemonList from '../components/home/list';
+import PokemonListTitle from '../components/home/title';
+import PokemonListAllCount from '../components/home/all-count';
 
 export default function Home() {
   return (

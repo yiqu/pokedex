@@ -8,4 +8,5 @@ export interface PokemonListResponse {
 export interface PokemonSimple {
   name: string;
   url: string;
+  favorite?: boolean;
 }

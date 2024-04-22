@@ -16,9 +16,9 @@ export default function AppTopNavBar() {
     <AppBar
       position="static"
       elevation={ 0 }
-      sx={ { backgroundColor: '#fff', border: '3px solid #3c5aa6', borderRadius: '15px', mt: 2 } }
+      sx={ { backgroundColor: '#ffffffcc', borderBottom: '1px solid #ebebeb', mt: 0 } }
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <LogoLink />
           <Typography variant="h2" ml={ 2 }>
