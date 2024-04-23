@@ -10,3 +10,16 @@ export interface PokemonSimple {
   url: string;
   favorite?: boolean;
 }
+
+export interface PokemonData {
+  [name: string]: {
+    isFavorite: boolean;
+    pokemonIndex: string;
+  };
+}
+
+export interface PokemonFavoriteDetail {
+  name: string;
+  isFavorite: boolean;
+  pokemonIndex: string;
+}

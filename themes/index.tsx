@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import CustomToaster from '@/shared/custom-toaster';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import type { ThemeOptions } from '@mui/material/styles';
@@ -26,6 +27,7 @@ export default function ThemeProvider({ children }: Props) {
     <MuiThemeProvider theme={ theme }>
       <CssBaseline />
       { children }
+      <CustomToaster />
     </MuiThemeProvider>
   );
 }

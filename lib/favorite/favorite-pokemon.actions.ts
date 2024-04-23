@@ -1,16 +1,19 @@
 'use server';
 
+import startCase from 'lodash/startCase';
 import { revalidateTag } from 'next/cache';
 import { FIREBASE_API_URL } from '@/config-global';
 import type { FormActionState } from '@/shared/models/form-action.model';
 
 export async function setPokemonAsFavorite(prevState: FormActionState<{ name: string }>, formData: FormData) {
   // sleep if dev
-  if (process.env.NODE_ENV === 'development') {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   await new Promise((resolve) => setTimeout(resolve, 1500));
+  // }
 
   const pokemonName = formData.get('name') as string | null;
+  const pokemonIndex = formData.get('index') as string | null;
+
   if (!pokemonName) {
     return {
       status: 'error',
@@ -26,6 +29,7 @@ export async function setPokemonAsFavorite(prevState: FormActionState<{ name: st
     },
     body: JSON.stringify({
       isFavorite: true,
+      pokemonIndex: pokemonIndex,
     }),
   });
 
@@ -33,7 +37,40 @@ export async function setPokemonAsFavorite(prevState: FormActionState<{ name: st
 
   return {
     status: response.ok ? 'success' : 'error',
-    message: response.ok ? 'Pokemon added to favorites' : 'Error adding Pokemon to favorites',
+    message: response.ok ? `${startCase(pokemonName)} added to favorites` : `Error adding Pokemon to favorites`,
+    payload: {
+      name: pokemonName,
+    },
+  };
+}
+
+export async function removePokemonFromFavorites(prevState: FormActionState<{ name: string }>, formData: FormData) {
+  const pokemonName = formData.get('name') as string | null;
+
+  if (!pokemonName) {
+    return {
+      status: 'error',
+      message: 'Error removing Pokemon from favorites',
+      payload: null,
+    };
+  }
+
+  const response = await fetch(`${FIREBASE_API_URL}next/pokemon/${pokemonName}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      isFavorite: false,
+      pokemonIndex: undefined,
+    }),
+  });
+
+  revalidateTag('pokemon-data');
+
+  return {
+    status: response.ok ? 'success' : 'error',
+    message: response.ok ? `${startCase(pokemonName)} removed from favorites` : `Error removing Pokemon from favorites`,
     payload: {
       name: pokemonName,
     },

@@ -8,6 +8,8 @@ import PokemonList from '../components/home/list';
 import PokemonListTitle from '../components/home/title';
 import PokemonListAllCount from '../components/home/all-count';
 
+//export const revalidate = 60;
+
 export default function Home() {
   return (
     <Stack width="100%" direction="column" justifyContent="start" alignItems="start" spacing={ 2 } my={ 2 }>
