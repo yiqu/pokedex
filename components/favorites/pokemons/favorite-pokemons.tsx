@@ -4,7 +4,7 @@ import type { PokemonData, PokemonFavoriteDetail } from '@/shared/models/list';
 
 import Stack from '@mui/material/Stack';
 
-export default async function FavoritePokemons() {
+export default async function FavoritePokemons({ useAnimateButton }: { useAnimateButton?: boolean }) {
   const pokemons: PokemonData = await getPokemonData();
   const pokemonList: PokemonFavoriteDetail[] = Object.keys(pokemons).map((key: string) => {
     return {
@@ -17,7 +17,15 @@ export default async function FavoritePokemons() {
   return (
     <Stack direction="column" justifyContent="start" alignItems="start" spacing={ 1 }>
       { pokemonList.map((pokemon: PokemonFavoriteDetail) => {
-        return <PokemonSimpleDisplay key={ pokemon.name } name={ pokemon.name } index={ +pokemon.pokemonIndex } favorite={ !!pokemon.isFavorite } />;
+        return (
+          <PokemonSimpleDisplay
+            key={ pokemon.name }
+            name={ pokemon.name }
+            index={ +pokemon.pokemonIndex }
+            favorite={ !!pokemon.isFavorite }
+            useAnimateButton={ useAnimateButton }
+          />
+        );
       }) }
     </Stack>
   );

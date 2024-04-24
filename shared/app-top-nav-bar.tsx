@@ -14,11 +14,17 @@ import AppTopNavLeftLinks from './app-top-nav-left-links';
 export default function AppTopNavBar() {
   return (
     <AppBar
-      position="static"
+      position="sticky"
       elevation={ 0 }
-      sx={ { backgroundColor: '#ffffffcc', borderBottom: '1px solid #ebebeb', mt: 0 } }
+      sx={ {
+        borderBottom: '1px solid #ebebeb',
+        mt: 0,
+        top: 0,
+        backdropFilter: 'blur(2px)',
+        backgroundColor: '#f2f2f236',
+      } }
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <LogoLink />
           <Typography variant="h2" ml={ 2 }>

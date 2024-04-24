@@ -7,6 +7,7 @@ import { URL_ID_NAME_SEPARATOR } from '@/shared/url.utils';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
+import ListPokemonAvatar from './list-avatar';
 import FavoritePokemonButton from './favorite-pokemon';
 
 interface PokemonSimpleProps {
@@ -14,18 +15,27 @@ interface PokemonSimpleProps {
   url?: string;
   index: number;
   favorite?: boolean;
+  useAnimateButton?: boolean;
 }
-export default function PokemonSimple({ name, url, index, favorite }: PokemonSimpleProps) {
+export default function PokemonSimple({ name, url, index, favorite, useAnimateButton }: PokemonSimpleProps) {
   const urlLink = `/pokemon/${name}${URL_ID_NAME_SEPARATOR}${index}`;
 
   return (
     <Stack direction="row" justifyContent="start" alignItems="start">
       <Stack direction="row" spacing={ 1 } justifyContent="start" alignItems="center">
-        <Image src={ `${POKEMON_SPRITE_API_URL}${index}.png` } alt={ name } width={ 70 } height={ 70 } />
+        <ListPokemonAvatar name={ name } id={ index }>
+          <Image src={ `${POKEMON_SPRITE_API_URL}${index}.png` } alt={ name } width={ 70 } height={ 70 } />
+        </ListPokemonAvatar>
+
         <Stack direction="column">
           <AppLink href={ urlLink } title={ <Typography variant="body2">{ startCase(name) }</Typography> } />
           <Stack direction="row" justifyContent="start" alignItems="center" spacing={ 1 }>
-            <FavoritePokemonButton pokemonName={ name } isFavorite={ !!favorite } pokemonIndex={ index } />
+            <FavoritePokemonButton
+              pokemonName={ name }
+              isFavorite={ !!favorite }
+              pokemonIndex={ index }
+              useAnimate={ useAnimateButton }
+            />
           </Stack>
         </Stack>
       </Stack>

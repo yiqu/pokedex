@@ -1,4 +1,9 @@
+import { red } from '@mui/material/colors';
 import { alpha } from '@mui/material/styles';
+import type { PaletteMode } from '@mui/material';
+import type { PaletteOptions} from '@mui/material/styles';
+
+import { GREY_TEXT, APP_TEXT_COLOR, APP_BODY_COLOR } from './typography';
 
 // ----------------------------------------------------------------------
 
@@ -117,14 +122,12 @@ const base = {
 
 // ----------------------------------------------------------------------
 
-export function palette(mode: 'light' | 'dark') {
+export function palette(mode: PaletteMode) {
   const light = {
     ...base,
-    mode: 'light',
+    mode: 'light' as PaletteMode,
     text: {
-      primary: grey[800],
-      secondary: grey[600],
-      disabled: grey[500],
+      ...MyPaletteOptions.text
     },
     background: {
       paper: '#FFFFFF',
@@ -139,7 +142,7 @@ export function palette(mode: 'light' | 'dark') {
 
   const dark = {
     ...base,
-    mode: 'dark',
+    mode: 'dark' as PaletteMode,
     text: {
       primary: '#FFFFFF',
       secondary: grey[500],
@@ -158,3 +161,18 @@ export function palette(mode: 'light' | 'dark') {
 
   return mode === 'light' ? light : dark;
 }
+
+
+/**
+ * Usage.
+ * 
+ * Any MUI components' sx={{color : xx}}
+ * xx can be stated as primary.main, text.primary, etc
+ */
+export const MyPaletteOptions: PaletteOptions = {
+  text: {
+    primary: APP_TEXT_COLOR, // also the body default color
+    secondary: APP_BODY_COLOR,
+    disabled: GREY_TEXT
+  }
+};

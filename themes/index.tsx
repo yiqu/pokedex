@@ -7,6 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import type { ThemeOptions } from '@mui/material/styles';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 
+import { palette } from './palette';
 import { typography } from './typography';
 
 type Props = {
@@ -14,9 +15,10 @@ type Props = {
 };
 
 export default function ThemeProvider({ children }: Props) {
-  const memoizedValue = useMemo(
+  const memoizedValue: ThemeOptions = useMemo(
     () => ({
       typography,
+      palette: palette('light')
     }),
     [],
   );

@@ -10,7 +10,7 @@ function Favorites() {
     <Stack width="100%" direction="column" justifyContent="start" alignItems="start" spacing={ 2 } my={ 2 }>
       <Typography variant="h4">Past and Current Favorites</Typography>
       <Suspense fallback={ <PokemonListLoading /> }>
-        <FavoritePokemons />
+        <FavoritePokemons useAnimateButton />
       </Suspense>
     </Stack>
   );

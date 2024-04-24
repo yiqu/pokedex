@@ -11,8 +11,8 @@ export function getParamsAsObject(params: URLSearchParams): { [key: string]: str
 export function getIdNameFromIdAndNamePathCombo(url: string) {
   if (url && url.includes(URL_ID_NAME_SEPARATOR)) {
     const urlParts = url.split(URL_ID_NAME_SEPARATOR);
-    const id: string = urlParts[0];
-    const name: string = urlParts[1];
+    const id: string = urlParts[1];
+    const name: string = urlParts[0];
     return {
       id,
       name: name

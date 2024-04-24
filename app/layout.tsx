@@ -6,10 +6,10 @@ import type { Metadata } from 'next';
 import ThemeProvider from '@/themes';
 import AppLayout from '@/shared/app-layout';
 
-
 //import { ViewTransitions } from 'next-view-transitions';
 
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { MotionLazy } from '@/shared/animate/motion-lazy';
 
 export const metadata: Metadata = {
   title: 'Pokemons | Pokedex',
@@ -27,7 +27,9 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider options={ { enableCssLayer: false } }>
           <ThemeProvider>
-            <AppLayout>{ children }</AppLayout>
+            <MotionLazy>
+              <AppLayout>{ children }</AppLayout>
+            </MotionLazy>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

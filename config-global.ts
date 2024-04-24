@@ -5,3 +5,4 @@ export const { FIREBASE_API_URL } = process.env;
 
 // API
 export const APP_API_URL = process.env.NEXT_PUBLIC_API_URL;
+export const POKE_API_URL = process.env.NEXT_PUBLIC_POKE_API_URL; //https://pokeapi.co/api/v2/pokemon
