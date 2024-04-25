@@ -27,7 +27,19 @@ export default function AppTopNavBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <LogoLink />
-          <Typography variant="h2" ml={ 2 }>
+          <Typography
+            variant="h2"
+            ml={ 2 }
+            sx={ {
+              backgroundColor: '#ffde00',
+              backgroundImage: `linear-gradient(125deg, #000099, #ffff00, #ff8566)`,
+              backgroundSize: '100%',
+              backgroundRepeat: 'repeat',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            } }
+            fontWeight={ 700 }
+          >
             <AppLink href="/" title={ APP_TITLE as Route } />
           </Typography>
           <Box sx={ { flexGrow: 1 } } />

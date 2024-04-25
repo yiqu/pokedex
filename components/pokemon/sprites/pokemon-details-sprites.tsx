@@ -3,6 +3,7 @@ import startCase from 'lodash/startCase';
 import { getSinglePokemon } from '@/lib/api/pokemon-data.api';
 
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
@@ -39,43 +40,37 @@ export default async function PokemonDetailsSprites({ id }: PokemonDetailsSprite
   }
 
   return (
-    <Stack direction="column" justifyContent="start" alignItems="start" width="100%" spacing={ 2 }>
+    <Stack direction="column" justifyContent="start" alignItems="start" width="100%" spacing={ 1 }>
       <Box width="100%">
         <Typography>Original</Typography>
         <Stack width="100%" direction="row" justifyContent="center" alignItems="center">
           <PokemonDetailsSpritesLayout>
             { spriteUrlFromStringValue.map((key, index) => {
               return (
-                <Stack
+                <Card
                   key={ key }
-                  height={ heights[index] ?? 50 }
-                  border="1px solid #fff"
-                  borderRadius="15px"
-                  overflow="hidden"
-                  direction="column"
-                  justifyContent={ 'center' }
-                  alignItems={ 'center' }
+                  sx={ {
+                    backgroundColor: '#e0c56c',
+                    height: heights[index] ?? 50,
+                    backgroundImage: `linear-gradient(95deg, #e0c56c, #f2e6c0)`,
+                  } }
+                  elevation={ 2 }
                 >
-                  <Image src={ sprites[key] } alt={ key } priority height={ 130 } width={ 130 } />
-                </Stack>
+                  <Stack
+                    height="100%"
+                    overflow="hidden"
+                    direction="column"
+                    justifyContent={ 'center' }
+                    alignItems={ 'center' }
+                  >
+                    <Image src={ sprites[key] } alt={ key } priority height={ 130 } width={ 130 } />
+                  </Stack>
+                </Card>
               );
             }) }
           </PokemonDetailsSpritesLayout>
         </Stack>
       </Box>
-      <Box width="100%">
-        <Typography>Dream World</Typography>
-        <Stack width="100%" direction="row" justifyContent="center" alignItems="center">
-          <Image
-            src={ sprites.other['dream_world']['front_default'] }
-            alt={ 'dream_world' }
-            priority
-            height={ 180 }
-            width={ 180 }
-          />
-        </Stack>
-      </Box>
-
       { otherNames.map((key, index) => {
         const spriteKeys = Object.keys(sprites['other'][key]);
         const spriteUrlFromStringValue = spriteKeys
@@ -96,18 +91,25 @@ export default async function PokemonDetailsSprites({ id }: PokemonDetailsSprite
               <PokemonDetailsSpritesLayout>
                 { spriteUrlFromStringValue.map((key, index) => {
                   return (
-                    <Stack
+                    <Card
                       key={ key }
-                      height={ heights2[index] ?? 50 }
-                      border="1px solid #fff"
-                      borderRadius="15px"
-                      overflow="hidden"
-                      direction="column"
-                      justifyContent={ 'center' }
-                      alignItems={ 'center' }
+                      sx={ {
+                        backgroundColor: '#99d6ff',
+                        backgroundImage: `linear-gradient(95deg, #99d6ff, #e6f5ff)`,
+                        height: heights2[index] ?? 50,
+                      } }
+                      elevation={ 2 }
                     >
-                      <Image src={ key } alt={ key } priority height={ 90 } width={ 90 } />
-                    </Stack>
+                      <Stack
+                        height={ '100%' }
+                        overflow="hidden"
+                        direction="column"
+                        justifyContent={ 'center' }
+                        alignItems={ 'center' }
+                      >
+                        <Image src={ key } alt={ key } priority height={ 90 } width={ 90 } />
+                      </Stack>
+                    </Card>
                   );
                 }) }
               </PokemonDetailsSpritesLayout>
@@ -146,19 +148,26 @@ export default async function PokemonDetailsSprites({ id }: PokemonDetailsSprite
                     <PokemonDetailsSpritesLayout>
                       { spriteUrlFromStringValue.map((key, index) => {
                         return (
-                          <Stack
+                          <Card
                             key={ key }
-                            height={ heights3[index] ?? 50 }
-                            border="1px solid #fff"
-                            borderRadius="15px"
-                            overflow="hidden"
-                            direction="column"
-                            justifyContent={ 'center' }
-                            alignItems={ 'center' }
-                            position="relative"
+                            sx={ {
+                              backgroundColor: '#f2f2f2',
+                              backgroundImage: `linear-gradient(95deg, #e6e6e6, #f2f2f2)`,
+                              height: heights3[index] ?? 50,
+                            } }
+                            elevation={ 2 }
                           >
-                            <Image src={ key } alt={ key } priority height={ 110 } width={ 110 } />
-                          </Stack>
+                            <Stack
+                              height="100%"
+                              overflow="hidden"
+                              direction="column"
+                              justifyContent={ 'center' }
+                              alignItems={ 'center' }
+                              position="relative"
+                            >
+                              <Image src={ key } alt={ key } priority height={ 110 } width={ 110 } />
+                            </Stack>
+                          </Card>
                         );
                       }) }
                     </PokemonDetailsSpritesLayout>
@@ -175,4 +184,4 @@ export default async function PokemonDetailsSprites({ id }: PokemonDetailsSprite
 
 const heights = [150, 110, 140, 150, 180, 90, 130, 126, 130, 90];
 const heights2 = [90, 120, 120, 147, 180, 90, 130, 126, 130, 90];
-const heights3 = [126, 90, 130, 128, 180, 90, 130, 126, 130, 90];
+const heights3 = [126, 140, 130, 128, 180, 90, 130, 126, 130, 90];

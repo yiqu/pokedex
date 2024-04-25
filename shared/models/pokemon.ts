@@ -21,7 +21,6 @@ export type PokemonSingleGameIndex = {
   };
 };
 
-
 export type PokemonSingleEncounter = {
   location_area: {
     name: string;
@@ -36,6 +35,6 @@ export type PokemonSingleEncounter = {
       chance: number;
       method: { name: string };
     }>;
-    version: { name: string };
+    version: { name: string; url: string };
   }>;
 };

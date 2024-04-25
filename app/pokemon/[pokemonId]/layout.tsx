@@ -38,7 +38,7 @@ export default function PokemonDetailLayout({
         <Typography variant="h3">{ startCase(name) }</Typography>
       </Stack>
 
-      <Suspense fallback={ <Skeleton variant="rectangular" width="10rem" height='1.5rem' /> }>{ children }</Suspense>
+      <Suspense fallback={ <Skeleton variant="rectangular" width="12rem" height='21px' /> }>{ children }</Suspense>
 
       <Box width="100%">
         <Grid container spacing={ 2 }>
@@ -46,7 +46,7 @@ export default function PokemonDetailLayout({
             { sprites }
           </Grid>
           <Grid xs={ 12 } sm={ 12 } md={ 8 }>
-            <Stack direction="column" justifyContent="start" alignItems="start" width="100%" spacing={ 2 }>
+            <Stack direction="column" justifyContent="start" alignItems="start" width="100%" spacing={ 4 }>
               { gameindices }
               { locationarea }
             </Stack>

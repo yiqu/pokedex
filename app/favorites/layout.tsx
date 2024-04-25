@@ -13,8 +13,11 @@ export default function FavoritesLayout({
   games,
   pokemons,
 }: Readonly<{ children: React.ReactNode; games: ReactNode; pokemons: ReactNode }>) {
-  return <Stack>{ children }
-    { games }
-    { pokemons }
-  </Stack>;
+  return (
+    <Stack>
+      { children }
+      { games }
+      { pokemons }
+    </Stack>
+  );
 }
