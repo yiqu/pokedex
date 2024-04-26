@@ -32,10 +32,10 @@ export default function PokemonDetailLayout({
   return (
     <Stack width="100%" direction="column" justifyContent="start" alignItems="start" spacing={ 3 } my={ 2 }>
       <Stack direction="row" spacing={ 1 }>
-        <Typography variant="h3" color="text.disabled">
+        <Typography variant="h4" color="text.disabled">
           #{ id }
         </Typography>
-        <Typography variant="h3">{ startCase(name) }</Typography>
+        <Typography variant="h4">{ startCase(name) }</Typography>
       </Stack>
 
       <Suspense fallback={ <Skeleton variant="rectangular" width="12rem" height='21px' /> }>{ children }</Suspense>
