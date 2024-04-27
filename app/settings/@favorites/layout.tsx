@@ -7,6 +7,7 @@ export default function SettingsFavoritesSlotLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <Paper variant="outlined" sx={ { pt: 3, px: 2, pb: 2, width: '100%' } }>
       <Stack width="100%" spacing={ 2 } direction="column">

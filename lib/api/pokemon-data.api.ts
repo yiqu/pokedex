@@ -20,7 +20,7 @@ export async function getSinglePokemon(id: string): Promise<PokemonSingleDetail>
   //   await new Promise((resolve) => setTimeout(resolve, 1000));
   // }
 
-  const pokemonDetailResponse = await fetch(`${POKE_API_URL}${id}`, { next: { tags: [`pokemon-detail-${id}`] } });
+  const pokemonDetailResponse = await fetch(`${POKE_API_URL}pokemon/${id}`, { next: { tags: [`pokemon-detail-${id}`] } });
   const pokemonDetail: PokemonSingleDetail = await pokemonDetailResponse.json();
   return pokemonDetail;
 }
@@ -31,7 +31,7 @@ export async function getSinglePokemonLocationEncounter(id: string): Promise<Pok
     await new Promise((resolve) => setTimeout(resolve, 2500));
   }
 
-  const pokemonDetailEncounterResponse = await fetch(`${POKE_API_URL}${id}/encounters`, { next: { tags: [`pokemon-detail-${id}-encounters`] } });
+  const pokemonDetailEncounterResponse = await fetch(`${POKE_API_URL}pokemon/${id}/encounters`, { next: { tags: [`pokemon-detail-${id}-encounters`] } });
   const pokemonDetailEncounter: PokemonSingleEncounter[] = await pokemonDetailEncounterResponse.json();
   return pokemonDetailEncounter;
 }

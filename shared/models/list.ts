@@ -23,3 +23,10 @@ export interface PokemonFavoriteDetail {
   isFavorite: boolean;
   pokemonIndex: string;
 }
+
+export interface PokeApiXhrResponse<T> {
+  count: number;
+  next: string;
+  previous: string;
+  results: T[];
+}

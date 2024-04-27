@@ -38,3 +38,8 @@ export type PokemonSingleEncounter = {
     version: { name: string; url: string };
   }>;
 };
+
+export type PokemonGameSimple = {
+  name: string;
+  url: string;
+};

@@ -1,4 +1,4 @@
-import { getPokemonList } from '@/lib/api/pokemon-list.api';
+import { getPokemonList } from '@/lib/api/pokemon.api';
 import { getPokemonData } from '@/lib/api/pokemon-data.api';
 import type { PokemonSimple, PokemonListResponse } from '@/shared/models/list';
 
