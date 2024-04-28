@@ -77,3 +77,7 @@ $palette-color4: #fefefe;
 $palette-color5: #58acf4;
 $palette-color6: #105edd;
 $palette-color7: #0b3075; */
+
+.text-link {
+  color: #087ea4;
+}

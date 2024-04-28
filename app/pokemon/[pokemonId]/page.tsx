@@ -30,7 +30,7 @@ export async function generateMetadata(
 
 export default async function PokemonDetails({ params }: PageProps<{ pokemonId: string }>) {
   const { id } = getIdNameFromIdAndNamePathCombo(params.pokemonId);
-  const pokemonDetailReponse = await getSinglePokemon(id);
+  const pokemonDetailResponse = await getSinglePokemon(id);
 
   return (
     <Box width="100%">
@@ -38,12 +38,12 @@ export default async function PokemonDetails({ params }: PageProps<{ pokemonId: 
         <Stack direction="row" spacing={ 2 }>
           <Stack direction="row" justifyContent="start" alignItems="center">
             <LineWeightIcon fontSize='small' />
-            <Typography>Height: { pokemonDetailReponse.height }</Typography>
+            <Typography>Height: { pokemonDetailResponse.height }</Typography>
           </Stack>
           
           <Stack direction="row" justifyContent="start" alignItems="center">
             <MonitorWeightIcon fontSize='small' />
-            <Typography>Weight: { pokemonDetailReponse.weight }</Typography>
+            <Typography>Weight: { pokemonDetailResponse.weight }</Typography>
           </Stack>
         </Stack>
       </Stack>

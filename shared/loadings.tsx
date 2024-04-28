@@ -7,7 +7,7 @@ export default function PokemonListLoading() {
   // show 40 loading skeletons
   return (
     <Stack direction="column" justifyContent="start" alignItems="start" spacing={ 1 } sx={ { pl: 2 } }>
-      { Array.from({ length: 40 }, (_, index) => {
+      { Array.from({ length: 30 }, (_, index) => {
         return <Skeleton key={ index } width="6rem" height="60px" />;
       }) }
     </Stack>

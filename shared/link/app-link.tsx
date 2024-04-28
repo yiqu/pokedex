@@ -13,9 +13,13 @@ interface AppLinkProps {
 
 export default function AppLink({ href, title, icon = null }: AppLinkProps) {
   return (
-    <Link href={ href as Route } style={ {width: '100%'} }>
+    <Link href={ href as Route } style={ { width: '100%' } } className="text-link">
       <Stack direction="row" justifyContent="start" alignItems="center">
-        <Stack mr={ 1 } direction="column" justifyContent="center" alignItems="center">{ icon }</Stack>
+        { icon && (
+          <Stack mr={ 1 } direction="column" justifyContent="center" alignItems="center">
+            { icon }
+          </Stack>
+        ) }
         { title }
       </Stack>
     </Link>
