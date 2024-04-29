@@ -5,7 +5,7 @@ import { revalidateTag } from 'next/cache';
 import { FIREBASE_API_URL } from '@/config-global';
 import type { FormActionState } from '@/shared/models/form-action.model';
 
-export async function setPokemonAsFavorite(prevState: FormActionState<{ name: string }>, formData: FormData) {
+export async function setPokemonAsFavorite(prevState: FormActionState, formData: FormData) {
   // sleep if dev
   // if (process.env.NODE_ENV === 'development') {
   //   await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -44,7 +44,7 @@ export async function setPokemonAsFavorite(prevState: FormActionState<{ name: st
   };
 }
 
-export async function removePokemonFromFavorites(prevState: FormActionState<{ name: string }>, formData: FormData) {
+export async function removePokemonFromFavorites(prevState: FormActionState, formData: FormData) {
   const pokemonName = formData.get('name') as string | null;
 
   if (!pokemonName) {
