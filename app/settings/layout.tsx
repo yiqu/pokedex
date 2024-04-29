@@ -1,3 +1,4 @@
+import DateDisplay from '@/shared/date/date-display';
 import SettingsLeftNav from '@/components/settings/settings-left-nav';
 
 import Box from '@mui/material/Box';
@@ -46,6 +47,9 @@ function SettingsLayout({
           </Grid>
         </Grid>
       </Box>
+      <Stack direction="row" justifyContent="end" width="100%">
+        <DateDisplay />
+      </Stack>
     </Stack>
   );
 }

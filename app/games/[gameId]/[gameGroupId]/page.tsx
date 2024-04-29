@@ -23,7 +23,7 @@ export async function generateStaticParams({ params }: { params: { gameId: strin
   });
 
   // eslint-disable-next-line no-console
-  console.log('IN PAGE:: generated game group ids static params: ', staticParams.length, staticParams[0]);
+  // console.log('IN PAGE:: generated game group ids static params: ', staticParams.length, staticParams[0]);
   return staticParams;
 }
 

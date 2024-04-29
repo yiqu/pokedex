@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import PokemonListLoading from '@/shared/loadings';
+import DateDisplay from '@/shared/date/date-display';
 
 import Stack from '@mui/material/Stack';
 import Skeleton from '@mui/material/Skeleton';
@@ -22,6 +23,9 @@ export default function Home() {
       <Suspense fallback={ <PokemonListLoading /> }>
         <PokemonList />
       </Suspense>
+      <Stack direction="row" justifyContent="end" width="100%">
+        <DateDisplay />
+      </Stack>
     </Stack>
   );
 }

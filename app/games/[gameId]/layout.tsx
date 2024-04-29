@@ -1,4 +1,5 @@
 import { getGameList } from '@/lib/api/pokemon.api';
+import DateDisplay from '@/shared/date/date-display';
 import { URL_ID_NAME_SEPARATOR } from '@/shared/url.utils';
 import type { PokeApiXhrResponse } from '@/shared/models/list';
 import type { PokemonGameSimple } from '@/shared/models/pokemon';
@@ -28,6 +29,9 @@ function GameDetailLayout({
   return (
     <Stack width="100%" direction="column" justifyContent="start" alignItems="start" spacing={ 2 } my={ 2 }>
       { children }
+      <Stack direction="row" justifyContent="end" width="100%">
+        <DateDisplay />
+      </Stack>
     </Stack>
   );
 }

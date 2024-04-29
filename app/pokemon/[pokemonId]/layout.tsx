@@ -1,11 +1,12 @@
 import startCase from 'lodash/startCase';
 import type { Metadata } from 'next/types';
 import { Suspense, type ReactNode } from 'react';
+import DateDisplay from '@/shared/date/date-display';
 import { getIdNameFromIdAndNamePathCombo } from '@/shared/url.utils';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Skeleton from "@mui/material/Skeleton";
+import Skeleton from '@mui/material/Skeleton';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
@@ -38,7 +39,7 @@ export default function PokemonDetailLayout({
         <Typography variant="h4">{ startCase(name) }</Typography>
       </Stack>
 
-      <Suspense fallback={ <Skeleton variant="rectangular" width="12rem" height='21px' /> }>{ children }</Suspense>
+      <Suspense fallback={ <Skeleton variant="rectangular" width="12rem" height="21px" /> }>{ children }</Suspense>
 
       <Box width="100%">
         <Grid container spacing={ 2 }>
@@ -53,6 +54,9 @@ export default function PokemonDetailLayout({
           </Grid>
         </Grid>
       </Box>
+      <Stack direction="row" justifyContent="end" width="100%">
+        <DateDisplay />
+      </Stack>
     </Stack>
   );
 }
