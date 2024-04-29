@@ -1,7 +1,6 @@
-export interface FormActionState<T> {
+export interface FormActionState {
   status: string;
   message: string;
-  payload: T | null;
 }
 
 export interface FormActionDelete {
