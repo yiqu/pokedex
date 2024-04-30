@@ -1,12 +1,13 @@
 import { Suspense } from 'react';
 import startCase from 'lodash/startCase';
+import CommentList from '@/components/games/comment-list';
 import GameDetailDisplay from '@/components/games/game-detail';
 import GameDetailCommentForm from '@/components/games/comment-form';
 import { getIdNameFromIdAndNamePathCombo } from '@/shared/url.utils';
 import GameDetailVersionGroupDisplay from '@/components/games/game-detail-version-group';
 
 import Stack from '@mui/material/Stack';
-import Divider from "@mui/material/Divider";
+import Divider from '@mui/material/Divider';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 
@@ -30,9 +31,21 @@ export default async function GameDetailPage({ params }: { params: { gameId: str
         </Suspense>
       </Stack>
 
-      <Divider variant='fullWidth' />
+      <Divider variant="fullWidth" textAlign='left'>
+        Leave a review
+      </Divider>
       <Stack>
         <GameDetailCommentForm />
+      </Stack>
+
+      <Divider variant="fullWidth" textAlign='left'>
+        Reviews
+      </Divider>
+
+      <Stack>
+        <Suspense fallback={ <Skeleton variant="rounded" height="3rem" /> }>
+          <CommentList versionId={ name } />
+        </Suspense>
       </Stack>
     </Stack>
   );

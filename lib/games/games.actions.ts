@@ -34,9 +34,12 @@ export async function addCommentAndRatingForGame(gameName: string, prevState: Fo
     body: JSON.stringify({
       comment,
       rating,
+      commentDate: Date.now(),
     }),
   });
   const responseData = await response.json();
+
+  revalidateTag(`game-comments-${gameName}`);
 
   return {
     status: response.ok ? 'success' : 'error',

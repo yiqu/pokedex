@@ -1,4 +1,3 @@
-import { format } from 'date-fns-tz';
 import formatInTimeZone from 'date-fns-tz/formatInTimeZone';
 
 import Stack from '@mui/material/Stack';
@@ -6,11 +5,11 @@ import Typography from '@mui/material/Typography';
 
 export default function DateDisplay() {
   const fullDate = formatInTimeZone(new Date(), EST_TIME_ZONE, 'MM/dd/yyyy hh:mm:ss a OOOO');
-  const fullDate2 = format(new Date(), 'MM/dd/yyyy hh:mm:ss a OOOO z');
+  //const fullDate2 = format(new Date(), 'MM/dd/yyyy hh:mm:ss a OOOO z');
   return (
     <Stack>
       <Typography variant="caption">
-        Generated on: { fullDate } || { fullDate2 }
+        Generated on: { fullDate }
       </Typography>
     </Stack>
   );

@@ -45,38 +45,37 @@ export default function GameDetailCommentForm() {
   );
 
   return (
-    <Stack p={ 3 } border="1px solid #eee" width="30rem" borderRadius="15px" spacing={ 1 }>
+    <Stack width="30rem" spacing={ 0 }>
       <Box>{ state.message && <Alert severity={ state.status as any }>{ state.message }</Alert> }</Box>
-      <Stack direction="row" justifyContent="start" alignItems="center" spacing={ 1 } pb={ 3 }>
-        <Typography>Add a comment and rating for this game:</Typography>
-      </Stack>
-
       <form action={ addCommentAction }>
-        <Stack spacing={ 2 }>
+        <Stack spacing={ 1 }>
+          <Stack direction="column" spacing={ 0.5 }>
+            <Typography color="text.disabled">Overall rating</Typography>
+            <HFRatingField
+              name="rating"
+              control={ control }
+              size="medium"
+              precision={ 1 }
+              max={ 5 }
+              icon={ <CatchingPokemonIconFill fontSize="medium" /> }
+              emptyIcon={ <CatchingPokemonIcon fontSize="medium" /> }
+              sx={ { color: 'primary.main' } }
+            />
+          </Stack>
           <HFTextField
             name="comment"
             label="Leave a comment..."
             control={ control }
-            variant="standard"
+            variant="outlined"
             type="text"
             fullWidth
             clearField={ handleClearField }
             multiline
             rows={ 2 }
           />
-          <Typography color="text.disabled">Leave a rating:</Typography>
-          <HFRatingField
-            name="rating"
-            control={ control }
-            size="medium"
-            precision={ 1 }
-            max={ 5 }
-            icon={ <CatchingPokemonIconFill fontSize="medium" /> }
-            emptyIcon={ <CatchingPokemonIcon fontSize="medium" /> }
-            sx={ { color: 'primary.main' } }
-          />
-
-          <AddCommentButton />
+          <Box>
+            <AddCommentButton />
+          </Box>
         </Stack>
       </form>
     </Stack>
@@ -87,12 +86,11 @@ function AddCommentButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Stack>
+    <Box textAlign="end">
       <Button type="submit" aria-disabled={ pending } variant="outlined">
         { pending ? 'Submitting...' : 'Submit' }
       </Button>
-      { pending && <Typography>Adding comment...</Typography> }
-    </Stack>
+    </Box>
   );
 }
 

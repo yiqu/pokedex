@@ -1,5 +1,6 @@
 import type { Route } from 'next';
 import { APP_TITLE } from '@/config-global';
+import NextTopLoader from 'nextjs-toploader';
 
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -24,6 +25,7 @@ export default function AppTopNavBar() {
         backgroundColor: '#f2f2f236',
       } }
     >
+      <NextTopLoader />
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <LogoLink />
