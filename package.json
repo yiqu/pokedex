@@ -5,14 +5,14 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
+    "build-with-analyzer-open": "cross-env ANALYZE=true ANALYZEOPEN=true next build",
+    "build-with-analyzer": "cross-env ANALYZE=true npm run build",
     "start": "next start -p 3001",
     "lint": "next lint",
     "lint:fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
     "push-prisma": "npx prisma db push",
-    "update-prisma": "npx prisma generate",
-    "analyze": "cross-env ANALYZE=true npm run build",
-    "serve": "serve .next/analyze"
+    "update-prisma": "npx prisma generate"
   },
   "dependencies": {
     "@emotion/cache": "~11.11.0",

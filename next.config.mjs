@@ -1,6 +1,9 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// });
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,6 +20,7 @@ const nextConfig = {
       transform: '@mui/lab/{{member}}',
     },
   },
+
   images: {
     remotePatterns: [
       {
@@ -27,6 +31,7 @@ const nextConfig = {
       },
     ],
   },
+
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -34,9 +39,27 @@ const nextConfig = {
     });
     return config;
   },
+
   experimental: {
     typedRoutes: true,
   },
+
+  redirects: async () => {
+    return [
+      {
+        source: '/',
+        destination: '/pokemons',
+        permanent: true,
+      },
+    ];
+  }
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+const configWithAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: process.env.ANALYZEOPEN === 'true',
+})(nextConfig);
+
+const toExport = process.env.ANALYZE === 'true' ? configWithAnalyzer : nextConfig;
+
+export default toExport;
