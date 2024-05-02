@@ -9,6 +9,9 @@ function GamesPage() {
   return (
     <Stack width="100%" direction="column" justifyContent="start" alignItems="start" spacing={ 2 } my={ 2 }>
       <Typography variant="h4">Games</Typography>
+      <Typography variant='caption'>
+        First 5 games are statically generated. The rest are dynamic fetch.
+      </Typography>
       <Suspense fallback={ <PokemonListLoading /> }>
         <GamesList />
       </Suspense>
