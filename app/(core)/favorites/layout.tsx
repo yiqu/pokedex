@@ -16,8 +16,8 @@ export default function FavoritesLayout({
   return (
     <Stack>
       { children }
-      { games }
       { pokemons }
+      { games }
     </Stack>
   );
 }

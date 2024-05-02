@@ -16,8 +16,9 @@ interface PokemonSimpleProps {
   index: number;
   favorite?: boolean;
   useAnimateButton?: boolean;
+  scrollOnNavigate?: boolean;
 }
-export default function PokemonSimple({ name, url, index, favorite, useAnimateButton }: PokemonSimpleProps) {
+export default function PokemonSimple({ name, url, index, favorite, useAnimateButton, scrollOnNavigate = true }: PokemonSimpleProps) {
   const urlLink = `/pokemon/${name}${URL_ID_NAME_SEPARATOR}${index}`;
 
   return (
@@ -28,7 +29,7 @@ export default function PokemonSimple({ name, url, index, favorite, useAnimateBu
         </ListPokemonAvatar>
 
         <Stack direction="column">
-          <AppLink href={ urlLink } title={ <Typography variant="body2">{ startCase(name) }</Typography> } />
+          <AppLink href={ urlLink } title={ <Typography variant="body2">{ startCase(name) }</Typography> } scroll={ scrollOnNavigate } />
           <Stack direction="row" justifyContent="start" alignItems="center" spacing={ 1 }>
             <FavoritePokemonButton
               pokemonName={ name }

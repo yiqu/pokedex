@@ -24,6 +24,7 @@ export default async function FavoritePokemons({ useAnimateButton }: { useAnimat
             index={ +pokemon.pokemonIndex }
             favorite={ !!pokemon.isFavorite }
             useAnimateButton={ useAnimateButton }
+            scrollOnNavigate={ false }
           />
         );
       }) }

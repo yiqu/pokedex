@@ -9,11 +9,12 @@ interface AppLinkProps {
   href: string;
   title: ReactNode;
   icon?: ReactNode;
+  scroll?: boolean;
 }
 
-export default function AppLink({ href, title, icon = null }: AppLinkProps) {
+export default function AppLink({ href, title, icon = null, scroll = true }: AppLinkProps) {
   return (
-    <Link href={ href as Route } style={ { width: '100%' } } className="text-link">
+    <Link href={ href as Route } style={ { width: '100%' } } className="text-link" scroll={ scroll }>
       <Stack direction="row" justifyContent="start" alignItems="center">
         { icon && (
           <Stack mr={ 1 } direction="column" justifyContent="center" alignItems="center">
