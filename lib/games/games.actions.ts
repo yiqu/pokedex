@@ -1,9 +1,12 @@
 'use server';
 
 import startCase from 'lodash/startCase';
-import { revalidateTag } from 'next/cache';
 import { FIREBASE_API_URL } from '@/config-global';
+import { revalidateTag, revalidatePath } from 'next/cache';
+import { URL_ID_NAME_SEPARATOR } from '@/shared/url.utils';
 import type { FormActionState } from '@/shared/models/form-action.model';
+
+import { revalidateByPath } from '../cache/revalidate';
 
 export async function addCommentAndRatingForGame(gameName: string, prevState: FormActionState, formData: FormData) {
   // sleep if dev
@@ -13,6 +16,7 @@ export async function addCommentAndRatingForGame(gameName: string, prevState: Fo
 
   const comment = formData.get('comment') as string | null;
   const rating = formData.get('rating') as string;
+  const gameId = formData.get('gameId') as string;
   const userInput = {
     comment,
     rating: parseInt(rating),
@@ -40,6 +44,7 @@ export async function addCommentAndRatingForGame(gameName: string, prevState: Fo
   const responseData = await response.json();
 
   revalidateTag(`game-comments-${gameName}`);
+  revalidatePath(`/games/${gameName}${URL_ID_NAME_SEPARATOR}${gameId}`);
 
   return {
     status: response.ok ? 'success' : 'error',

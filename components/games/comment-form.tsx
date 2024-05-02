@@ -20,7 +20,7 @@ import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemonOutlined';
 export default function GameDetailCommentForm() {
   const params = useParams<{ gameId: string }>();
   const gameNameId: string = params.gameId;
-  const { name } = getIdNameFromIdAndNamePathCombo(gameNameId);
+  const { name, id } = getIdNameFromIdAndNamePathCombo(gameNameId);
 
   const { control, setValue, getValues } = useForm<GameComment>({
     defaultValues: getInitFormValue(),
@@ -73,6 +73,7 @@ export default function GameDetailCommentForm() {
             multiline
             rows={ 2 }
           />
+          <input name="gameId" defaultValue={ id } hidden readOnly />
           <Box>
             <AddCommentButton />
           </Box>

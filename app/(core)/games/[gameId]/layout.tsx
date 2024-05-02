@@ -14,7 +14,6 @@ export async function generateStaticParams() {
     };
   });
   // eslint-disable-next-line no-console
-  console.log('IN LAYOUT:: generated game ids static params: ', games.length, games[0]);
   return games;
 }
 
