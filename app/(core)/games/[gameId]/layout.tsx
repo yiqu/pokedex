@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 // force the page to be server-side rendered with dynamic params
-export const dynamicParams = false;
+// export const dynamicParams = false;
 
 function GameDetailLayout({
   children,
