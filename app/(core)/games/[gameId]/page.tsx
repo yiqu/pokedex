@@ -11,7 +11,6 @@ import Divider from '@mui/material/Divider';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 
-export const dynamicParams = true;
 
 export default async function GameDetailPage({ params }: { params: { gameId: string } }) {
   const { name, id } = getIdNameFromIdAndNamePathCombo(params.gameId);

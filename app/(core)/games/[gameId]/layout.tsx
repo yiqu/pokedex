@@ -14,11 +14,12 @@ export async function generateStaticParams() {
     };
   });
   // eslint-disable-next-line no-console
-  return games;
+  // static for first 5 items
+  return games.splice(0, 5);
 }
 
 // force the page to be server-side rendered with dynamic params
-// export const dynamicParams = false;
+export const dynamicParams = true;
 
 function GameDetailLayout({
   children,
