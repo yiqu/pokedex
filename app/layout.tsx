@@ -11,6 +11,8 @@ import AppLayout from '@/shared/app-layout';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { MotionLazy } from '@/shared/animate/motion-lazy';
 
+import { Analytics } from '@vercel/analytics/react';
+
 export const metadata: Metadata = {
   title: 'Pokemons | Pokedex',
   description: 'Discover all the Pokémon in the world!',
@@ -32,6 +34,7 @@ export default function RootLayout({
             </MotionLazy>
           </ThemeProvider>
         </AppRouterCacheProvider>
+        { process.env.NODE_ENV === 'production' && <Analytics /> }
       </body>
     </html>
     // </ViewTransitions>
