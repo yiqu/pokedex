@@ -25,7 +25,6 @@ export async function getSinglePokemon(id: string): Promise<PokemonSingleDetail>
   // if (process.env.NODE_ENV === 'development') {
   //   await new Promise((resolve) => setTimeout(resolve, 1000));
   // }
-
   const pokemonDetailResponse = await fetch(`${POKE_API_URL}pokemon/${id}`, { next: { tags: [`pokemon-detail-${id}`] } });
   const pokemonDetail: PokemonSingleDetail = await pokemonDetailResponse.json();
   return pokemonDetail;

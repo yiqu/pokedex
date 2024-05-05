@@ -6,12 +6,11 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 import { URL_ID_NAME_SEPARATOR } from '@/shared/url.utils';
 import type { FormActionState } from '@/shared/models/form-action.model';
 
-
 export async function addCommentAndRatingForGame(gameName: string, prevState: FormActionState, formData: FormData) {
   // sleep if dev
   // if (process.env.NODE_ENV === 'development') {
   //   await new Promise((resolve) => setTimeout(resolve, 1500));
-  // } 
+  // }
 
   const comment = formData.get('comment') as string | null;
   const rating = formData.get('rating') as string;
