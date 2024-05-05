@@ -65,3 +65,22 @@ export async function getVersionGroupDetails(versionGroupId: string): Promise<Po
     return null;
   }
 }
+
+
+export async function getLocationList(offset: number = 0, limit: number = 100): Promise<PokeApiXhrResponse<PokemonGameSimple> | null>  {
+  // if dev mode, sleep for 2 seconds
+  //if (process.env.NODE_ENV === 'development') {
+  //  await new Promise((resolve) => setTimeout(resolve, 1000));
+  //}
+
+  try {
+    const locationsList = await fetch(`${POKE_API_URL}location?offset=${offset}&limit=${limit}`, {
+      next: { tags: [`pokemon-locations`] },
+    });
+    const dataDetails = await locationsList.json();
+    return dataDetails;
+  } catch (error) {
+    console.error('Error fetching locations', error);
+    return null;
+  }
+}
