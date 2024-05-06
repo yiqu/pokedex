@@ -66,7 +66,7 @@ export async function toggleFavoriteLocation2(formData: FormData) {
     }),
   });
 
-  //revalidateTag('locations-favorite-data');
+  revalidateTag('locations-favorite-data');
   //revalidateByPath('/locations');
 
   return {
