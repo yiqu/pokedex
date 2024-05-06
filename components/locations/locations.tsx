@@ -78,7 +78,7 @@ export default function Locations({
     <Stack spacing={ 1.5 }>
       { locationsData.map((location) => {
         const index = location.url.split('/').filter(Boolean).pop();
-        const urlLink = `/pokemon/${location.name}${URL_ID_NAME_SEPARATOR}${index}`;
+        const urlLink = `/locations/${location.name}${URL_ID_NAME_SEPARATOR}${index}`;
         const isFavorite: boolean = optimisticFavoriteLocations[location.name]?.isFavorite || false;
         const isOptimisticLoading: boolean = optimisticFavoriteLocations[location.name]?.isLoading || false;
 
