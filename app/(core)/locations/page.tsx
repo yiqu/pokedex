@@ -16,7 +16,7 @@ export default function LocationsPage() {
           <LocationListCount />
         </Suspense>
       </Stack>
-      <Typography variant="caption">Optimistic updated</Typography>
+      <Typography variant="caption">Optimistically updated using useOptimistic</Typography>
       <Suspense fallback={ <PokemonListLoading /> }>
         <LocationsListComponent />
       </Suspense>

@@ -18,6 +18,14 @@ export interface PokemonData {
   };
 }
 
+export interface FireFavoriteData {
+  [name: string]: {
+    isFavorite: boolean;
+    locationUrl: string;
+    isLoading?: boolean;
+  };
+}
+
 export interface PokemonFavoriteDetail {
   name: string;
   isFavorite: boolean;
