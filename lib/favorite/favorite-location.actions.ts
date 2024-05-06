@@ -43,41 +43,40 @@ export async function toggleFavoriteLocation(prevState: FormActionState, formDat
   };
 }
 
-
 export async function toggleFavoriteLocation2(formData: FormData) {
-// if dev mode, sleep for 2 seconds
-if (process.env.NODE_ENV === 'development') {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-}
+  // if dev mode, sleep for 2 seconds
+  if (process.env.NODE_ENV === 'development') {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  }
 
-const locationName = formData.get('name') as string;
-const locationUrl = formData.get('locationUrl') as string;
-const isFavorite = formData.get('isFavorite') as string;
-const nextFavoriteStatus = isFavorite === 'true' ? false : true;
+  const locationName = formData.get('name') as string;
+  const locationUrl = formData.get('locationUrl') as string;
+  const isFavorite = formData.get('isFavorite') as string;
+  const nextFavoriteStatus = isFavorite === 'true' ? false : true;
 
-const url = `${FIREBASE_API_URL}next/locations/${locationName}.json`;
-const response = await fetch(url, {
-  method: 'PUT',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    isFavorite: nextFavoriteStatus,
-    locationUrl: locationUrl,
-  }),
-});
+  const url = `${FIREBASE_API_URL}next/locations/${locationName}.json`;
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      isFavorite: nextFavoriteStatus,
+      locationUrl: locationUrl,
+    }),
+  });
 
-//revalidateTag('locations-favorite-data');
-//revalidateByPath('/locations');
+  revalidateTag('locations-favorite-data');
+  //revalidateByPath('/locations');
 
-return {
-  status: response.ok ? 'success' : 'error',
-  message:
-    response.ok ?
-      `${startCase(locationName)} ${nextFavoriteStatus ? 'added to' : 'removed from' }  favorites`
-    : `Error updating ${startCase(locationName)}`,
-  payload: {
-    name: locationName,
-  },
-};
+  return {
+    status: response.ok ? 'success' : 'error',
+    message:
+      response.ok ?
+        `${startCase(locationName)} ${nextFavoriteStatus ? 'added to' : 'removed from'}  favorites`
+      : `Error updating ${startCase(locationName)}`,
+    payload: {
+      name: locationName,
+    },
+  };
 }
