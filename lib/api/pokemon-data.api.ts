@@ -70,7 +70,7 @@ export async function getCommentListByGameVersion(version: string): Promise<Comm
 
 export async function getFavoriteLocations(): Promise<FireFavoriteData> {
   const response = await fetch(`${FIREBASE_API_URL}next/locations/.json`, {
-    next: { tags: ['locations-favorite-data'], revalidate: 10 },
+    next: { tags: ['locations-favorite-data'], revalidate: 0 },
   });
   const locationsData = await response.json();
   if (!locationsData) {
