@@ -13,7 +13,6 @@ export default async function FavoritePokemons({ useAnimateButton }: { useAnimat
       pokemonIndex: pokemons[key].pokemonIndex,
     };
   });
-
   return (
     <Stack direction="column" justifyContent="start" alignItems="start" spacing={ 1 }>
       { pokemonList.map((pokemon: PokemonFavoriteDetail) => {
@@ -21,10 +20,10 @@ export default async function FavoritePokemons({ useAnimateButton }: { useAnimat
           <PokemonSimpleDisplay
             key={ pokemon.name }
             name={ pokemon.name }
-            index={ +pokemon.pokemonIndex }
             favorite={ !!pokemon.isFavorite }
             useAnimateButton={ useAnimateButton }
             scrollOnNavigate={ false }
+            index={ pokemon.pokemonIndex }
           />
         );
       }) }

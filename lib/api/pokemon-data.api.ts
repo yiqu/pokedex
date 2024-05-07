@@ -2,18 +2,17 @@ import type { Comment } from '@/shared/models/game';
 import { EST_TIME_ZONE } from '@/shared/date/date-display';
 import formatInTimeZone from 'date-fns-tz/formatInTimeZone';
 import type { FirebaseData } from '@/shared/models/firebase';
-import { POKE_API_URL, FIREBASE_API_URL } from '@/config-global';
 import type { PokemonData, FireFavoriteData } from '@/shared/models/list';
+import { POKE_API_URL, FIREBASE_API_URL, FIREBASE_API_URL_PUBLIC } from '@/config-global';
 import type { PokemonSingleDetail, PokemonSingleEncounter } from '@/shared/models/pokemon';
 
-const pokemonDataUrl = `${FIREBASE_API_URL}next/pokemon.json`;
+export const pokemonDataUrl = `${FIREBASE_API_URL_PUBLIC}next/pokemon/.json`;
 
 export async function getPokemonData(): Promise<PokemonData> {
   // if dev mode, sleep for 2 seconds
   // if (process.env.NODE_ENV === 'development') {
   //   await new Promise((resolve) => setTimeout(resolve, 1000));
   // }
-
   const pokemonDataResponse = await fetch(pokemonDataUrl, { next: { tags: ['pokemon-data'] } });
   const pokemonData = await pokemonDataResponse.json();
   return pokemonData;

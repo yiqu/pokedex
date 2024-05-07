@@ -5,8 +5,6 @@ import { revalidateTag } from 'next/cache';
 import { FIREBASE_API_URL } from '@/config-global';
 import type { FormActionState } from '@/shared/models/form-action.model';
 
-import { revalidateByPath } from '../cache/revalidate';
-
 export async function toggleFavoriteLocation(prevState: FormActionState, formData: FormData): Promise<any> {
   // if dev mode, sleep for 2 seconds
   if (process.env.NODE_ENV === 'development') {

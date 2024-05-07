@@ -1,12 +1,10 @@
 import { Suspense } from 'react';
 import PokemonList from '@/components/home/list';
-import PokemonListLoading from '@/shared/loadings';
 import PokemonListTitle from '@/components/home/title';
 import PokemonListAllCount from '@/components/home/all-count';
 
 import Stack from '@mui/material/Stack';
 import Skeleton from '@mui/material/Skeleton';
-
 
 //export const revalidate = 60;
 
@@ -19,9 +17,7 @@ export default function Home() {
           <PokemonListAllCount />
         </Suspense>
       </Stack>
-      <Suspense fallback={ <PokemonListLoading /> }>
-        <PokemonList />
-      </Suspense>
+      <PokemonList />
     </Stack>
   );
 }

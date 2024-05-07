@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function PokemonsLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <Stack>{ children }</Stack>;
+  return <Stack width="100%">{ children }</Stack>;
 }
