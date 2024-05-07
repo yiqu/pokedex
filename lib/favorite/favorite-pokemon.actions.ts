@@ -1,8 +1,8 @@
 'use server';
 
 import startCase from 'lodash/startCase';
-import { revalidateTag } from 'next/cache';
 import { FIREBASE_API_URL } from '@/config-global';
+import { revalidateTag, revalidatePath } from 'next/cache';
 import type { FormActionState } from '@/shared/models/form-action.model';
 
 export async function setPokemonAsFavorite(prevState: FormActionState, formData: FormData) {
@@ -106,7 +106,8 @@ export async function setPokemonAsFavorite2(formData: FormData) {
   });
 
   revalidateTag('pokemon-data');
-
+  revalidatePath('/favorites');
+  
   return {
     status: response.ok ? 'success' : 'error',
     message: response.ok ? `${startCase(pokemonName)} added to favorites` : `Error adding Pokemon to favorites`,
@@ -140,6 +141,7 @@ export async function removePokemonFromFavorites2(formData: FormData) {
   });
 
   revalidateTag('pokemon-data');
+  revalidatePath('/favorites');
 
   return {
     status: response.ok ? 'success' : 'error',
