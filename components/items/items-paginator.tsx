@@ -15,7 +15,7 @@ type DataPaginatorProps = {
 };
 
 export default function DataPaginator({ totalCount }: DataPaginatorProps) {
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
   const router = useRouter();
   const pathname = usePathname();
   const queryParams = useSearchParams();
@@ -42,7 +42,15 @@ export default function DataPaginator({ totalCount }: DataPaginatorProps) {
       spacing={ 2 }
       className={ styles['sticky-position'] }
     >
-      <Pagination count={ pagesCount } page={ currentPage } showFirstButton showLastButton onChange={ handleOnPageChange } />
+      <Pagination
+        count={ pagesCount }
+        page={ currentPage }
+        showFirstButton
+        showLastButton
+        onChange={ handleOnPageChange }
+        siblingCount={ 6 }
+        boundaryCount={ 3 }
+      />
     </Stack>
   );
 }
