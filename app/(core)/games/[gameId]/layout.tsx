@@ -6,20 +6,20 @@ import type { PokemonGameSimple } from '@/shared/models/pokemon';
 
 import Stack from '@mui/material/Stack';
 
-// export async function generateStaticParams() {
-//   const gamesData: PokeApiXhrResponse<PokemonGameSimple> = await getGameList();
-//   const games = gamesData.results.map((res) => {
-//     return {
-//       gameId: `${res.name}${URL_ID_NAME_SEPARATOR}${res.url.split('/').slice(-2)[0]}`,
-//     };
-//   });
-//   // eslint-disable-next-line no-console
-//   // static for first 5 items
-//   return games.splice(0, 5);
-// }
+export async function generateStaticParams() {
+  const gamesData: PokeApiXhrResponse<PokemonGameSimple> = await getGameList();
+  const games = gamesData.results.map((res) => {
+    return {
+      gameId: `${res.name}${URL_ID_NAME_SEPARATOR}${res.url.split('/').slice(-2)[0]}`,
+    };
+  });
+  // eslint-disable-next-line no-console
+  // static for first 5 items
+  return games.splice(0, 5);
+}
 
 // force the page to be server-side rendered with dynamic params
-//export const dynamicParams = true;
+export const dynamicParams = true;
 
 function GameDetailLayout({
   children,
